@@ -4,17 +4,17 @@ import { Link } from 'react-router-dom';
 const Header = () => {
     return (
         <ul className="nav justify-content-end">
-            <li className="nav-item">
-                <a className="nav-link active" href="#">Active</a>
+            <li className="bitbook">
+                BitBook
             </li>
             <li className="nav-item">
-                <a className="nav-link" href="#">Link</a>
+                <Link to="/Feed"> Feed | </Link>
             </li>
             <li className="nav-item">
-                <a className="nav-link" href="#">Link</a>
+                <Link to="/People"> People | </Link>
             </li>
             <li className="nav-item">
-                <a className="nav-link disabled" href="#">Disabled</a>
+                <Link to="/Profile"> Profile</Link>
             </li>
         </ul>
     )

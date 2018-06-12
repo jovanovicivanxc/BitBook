@@ -26,3 +26,25 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.bitbook {
+  float: left;
+  display: inline-block;
+  margin-right: 300px;
+}
+
+.post {
+  width: 400px;
+  margin: 20px auto;
+  background-color: gainsboro;
+  border: 1px solid gray;
+}
+
+.description {
+  text-align: right;
+  margin-right: 10px;
+}
+
+.typeOfPost {
+  margin-right : 200px;
+}
