@@ -21,7 +21,6 @@ class SingleFeedPage extends React.Component {
         if (this.props.match.params.type === "image") {
             PostService.getImages(this.props.match.params.id)
                 .then((post) => {
-                    console.log(post)
                     this.setState({
                         post: post,
                     })
@@ -47,7 +46,6 @@ class SingleFeedPage extends React.Component {
     loadComments() {
         PostService.getComments(this.props.match.params.id)
             .then((comments) => {
-                console.log(comments)
                 this.setState({
                     comments: comments,
                 })
@@ -59,15 +57,10 @@ class SingleFeedPage extends React.Component {
             .then((comment) => {
                 this.loadComments();
 
-                // console.log(comment)
-                // this.setState({
-                //     comment: comment
-                // })
             })
     }
 
     handleInput(event) {
-        console.log(event.target.value);
 
         this.setState({
             comment: event.target.value

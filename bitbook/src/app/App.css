@@ -34,7 +34,7 @@
 }
 
 .post {
-  width: 400px;
+  width: 550px;
   margin: 20px auto;
   background-color: gainsboro;
   border: 1px solid gray;
@@ -46,7 +46,7 @@
 }
 
 .typeOfPost {
-  margin-right : 200px;
+  margin-right : 370px;
 }
 
 body{
