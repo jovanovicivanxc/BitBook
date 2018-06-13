@@ -7,16 +7,19 @@ class FeedPage extends React.Component {
         super(props);
 
         this.state = {
-            posts: []
+            posts: [],
         }
     }
 
     loadPosts() {
         PostService.getPosts()
-            .then((posts) =>
+            .then((posts) => {
                 this.setState({
                     posts: posts,
-                }))
+                });
+                console.log(posts);
+
+            });
     }
 
     componentDidMount() {
