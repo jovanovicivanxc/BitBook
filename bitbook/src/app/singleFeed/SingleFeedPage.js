@@ -2,14 +2,14 @@ import React from 'react'
 import PostItem from '../feed/PostsList';
 import PostService from '../../services/PostService';
 import SinglePostItem from './SinglePostItem';
-import CommentsList from './CommentsList'
+import CommentsList from './CommentsList';
 
 class SingleFeedPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             post: "",
-            comment: "",
+            comments: [],
         }
     }
     loadSinglePost() {
@@ -30,7 +30,7 @@ class SingleFeedPage extends React.Component {
                     })
                 })
         }
-        else if (this.props.match.params.type === "string") {
+        else if (this.props.match.params.type === "text") {
             PostService.getStrings(this.props.match.params.id)
                 .then((post) => {
                     this.setState({
@@ -38,15 +38,15 @@ class SingleFeedPage extends React.Component {
                     })
                 })
         }
-        loadComments() { // Problem sa zagradom
-            PostService.getComments(this.props.match.params.id)
-                .then((comment) => {
-                    console.log(comment)
-                    this.setState({
-                        comment: comment,
-                    })
+    }
+    loadComments() {
+        PostService.getComments(this.props.match.params.id)
+            .then((comments) => {
+                console.log(comments)
+                this.setState({
+                    comments: comments,
                 })
-        }
+            })
     }
 
 
@@ -55,12 +55,11 @@ class SingleFeedPage extends React.Component {
         this.loadComments();
     }
 
-
     render() {
         return (
             <main>
                 <SinglePostItem {...this.state.post} />
-                <CommentsList {...this.state.comment} />
+                <CommentsList comments={this.state.comments} />
             </main>
         )
 

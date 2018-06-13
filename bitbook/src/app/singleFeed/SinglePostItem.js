@@ -8,7 +8,7 @@ const SinglePostItem = (props) => {
         return <div className="post" > <img className="post" src={props.imageUrl} /> </div>
     }
 
-    else if (props.type === 'string') {
+    else if (props.type === 'text') {
         return <div className="post"> <p> {props.text} </p> </div>
     }
 
