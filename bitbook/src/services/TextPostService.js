@@ -1,0 +1,25 @@
+import Axios from 'axios';
+import serviceUrl from '../shared/Constants';
+
+class TextPostService {
+    postSingleText(text, userId) {
+        return Axios({
+            method: 'post',
+            url: `${serviceUrl}TextPosts/`,
+
+            headers: {
+                'key': 'bitbookdev',
+                'sessionId': '2990B489-DB94-4AC1-ACDE-CDC9CC3EAEAE',
+                'content-type': 'application/json',
+            },
+            data: {
+                text: text,
+                userId: userId
+            }
+
+        })
+
+    }
+}
+
+export default new TextPostService();

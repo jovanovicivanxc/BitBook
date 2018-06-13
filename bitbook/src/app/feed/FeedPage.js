@@ -3,6 +3,7 @@ import PostService from '../../services/PostService';
 import PostsList from './PostsList';
 import newPostImg from './images/newpost.png';
 import Modal from 'react-responsive-modal';
+import TextPostService from '../../services/TextPostService';
 
 class FeedPage extends React.Component {
     constructor(props) {
@@ -11,7 +12,11 @@ class FeedPage extends React.Component {
         this.state = {
             posts: [],
             open: false,
+            postContent: "",
         }
+
+        this.handleTextInput = this.handleTextInput.bind(this);
+        this.postTextPost = this.postTextPost.bind(this);
     }
 
     loadPosts() {
@@ -21,22 +26,35 @@ class FeedPage extends React.Component {
                     posts: posts,
                 });
                 console.log(posts);
-
             });
     }
 
     componentDidMount() {
         this.loadPosts();
-
     }
 
     onOpenModal = () => {
         this.setState({ open: true });
     };
-
     onCloseModal = () => {
         this.setState({ open: false });
     };
+
+    postTextPost() {
+        TextPostService.postSingleText(this.state.postContent, this.props.match.params.id)
+            .then((postContent) => {
+                this.loadPosts();
+
+            })
+    }
+
+    handleTextInput(event) {
+        console.log(event.target.value);
+
+        this.setState({
+            postContent: event.target.value
+        })
+    }
 
     render() {
         const { open } = this.state;
@@ -45,17 +63,19 @@ class FeedPage extends React.Component {
                 <PostsList posts={this.state.posts} />
 
                 <div>
-                    <button onClick={this.onOpenModal}>Open modal</button>
                     <Modal open={open} onClose={this.onCloseModal} center>
-                        <h2>Simple centered modal</h2>
+                        <h4>New post</h4>
+                        <p> Post content </p>
+                        <input value={this.state.postContent} onChange={this.handleTextInput} />
+                        <button onClick={this.postTextPost}> POST </button>
                     </Modal>
                 </div>
 
                 <div id="container-floating">
 
-                    <div className="nd4 nds" data-toggle="tooltip" data-placement="left" data-original-title="contract@gmail.com"><img className="reminder" />
+                    <button onClick={this.onOpenModal} className="nd4 nds" data-toggle="tooltip" data-placement="left" data-original-title="contract@gmail.com"><img className="reminder" />
                         <p className="letter">Post</p>
-                    </div>
+                    </button>
                     <div className="nd3 nds" data-toggle="tooltip" data-placement="left" data-original-title="Reminder"><img className="reminder" />
                         <p className="letter">Video</p> </div>
                     <div className="nd1 nds" data-toggle="tooltip" data-placement="left" data-original-title="Edoardo@live.it"><img className="reminder" />

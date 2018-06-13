@@ -3,6 +3,7 @@ import PostItem from '../feed/PostsList';
 import PostService from '../../services/PostService';
 import SinglePostItem from './SinglePostItem';
 import CommentsList from './CommentsList';
+import CommentService from '../../services/CommentService';
 
 class SingleFeedPage extends React.Component {
     constructor(props) {
@@ -10,7 +11,11 @@ class SingleFeedPage extends React.Component {
         this.state = {
             post: "",
             comments: [],
+            comment: "",
         }
+        this.handleInput = this.handleInput.bind(this);
+        this.postComment = this.postComment.bind(this);
+
     }
     loadSinglePost() {
         if (this.props.match.params.type === "image") {
@@ -49,6 +54,26 @@ class SingleFeedPage extends React.Component {
             })
     }
 
+    postComment() {
+        CommentService.postSingleComment(this.state.comment, this.props.match.params.id)
+            .then((comment) => {
+                this.loadComments();
+
+                // console.log(comment)
+                // this.setState({
+                //     comment: comment
+                // })
+            })
+    }
+
+    handleInput(event) {
+        console.log(event.target.value);
+
+        this.setState({
+            comment: event.target.value
+        })
+    }
+
 
     componentDidMount() {
         this.loadSinglePost();
@@ -59,6 +84,8 @@ class SingleFeedPage extends React.Component {
         return (
             <main>
                 <SinglePostItem {...this.state.post} />
+                <input value={this.state.comment} onChange={this.handleInput} placeholder="Add your comment" />
+                <button onClick={this.postComment}>SEND </button>
                 <CommentsList comments={this.state.comments} />
             </main>
         )
