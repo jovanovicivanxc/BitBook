@@ -8,10 +8,10 @@ const Header = () => {
                 BitBook
             </li>
             <li className="nav-item">
-                <Link to="/Feed"> Feed | </Link>
+                <Link to="/"> Feed  </Link>
             </li>
             <li className="nav-item">
-                <Link to="/People"> People | </Link>
+                <Link to="/People"> People  </Link>
             </li>
             <li className="nav-item">
                 <Link to="/Profile"> Profile</Link>
