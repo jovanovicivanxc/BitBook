@@ -1,10 +1,8 @@
 import React from 'react';
 
-const SingleProfile = (props) => {
+const SingleProfile2 = (props) => {
     return (
         <div>
-            <img className="profPic" src={props.profile.avatarUrl} />
-            <br />
             <br />
             <p className="profName"> {props.profile.name}</p>
             <br />
@@ -18,4 +16,4 @@ const SingleProfile = (props) => {
     )
 }
 
-export default SingleProfile;
+export default SingleProfile2;
