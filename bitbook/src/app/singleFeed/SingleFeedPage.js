@@ -2,21 +2,25 @@ import React from 'react'
 import PostItem from '../feed/PostsList';
 import PostService from '../../services/PostService';
 import SinglePostItem from './SinglePostItem';
-import CommentsList from './CommentsList'
+import CommentsList from './CommentsList';
+import CommentService from '../../services/CommentService';
 
 class SingleFeedPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             post: "",
+            comments: [],
             comment: "",
         }
+        this.handleInput = this.handleInput.bind(this);
+        this.postComment = this.postComment.bind(this);
+
     }
     loadSinglePost() {
         if (this.props.match.params.type === "image") {
             PostService.getImages(this.props.match.params.id)
                 .then((post) => {
-                    console.log(post)
                     this.setState({
                         post: post,
                     })
@@ -30,7 +34,7 @@ class SingleFeedPage extends React.Component {
                     })
                 })
         }
-        else if (this.props.match.params.type === "string") {
+        else if (this.props.match.params.type === "text") {
             PostService.getStrings(this.props.match.params.id)
                 .then((post) => {
                     this.setState({
@@ -38,15 +42,29 @@ class SingleFeedPage extends React.Component {
                     })
                 })
         }
-        loadComments() { // Problem sa zagradom
-            PostService.getComments(this.props.match.params.id)
-                .then((comment) => {
-                    console.log(comment)
-                    this.setState({
-                        comment: comment,
-                    })
+    }
+    loadComments() {
+        PostService.getComments(this.props.match.params.id)
+            .then((comments) => {
+                this.setState({
+                    comments: comments,
                 })
-        }
+            })
+    }
+
+    postComment() {
+        CommentService.postSingleComment(this.state.comment, this.props.match.params.id)
+            .then((comment) => {
+                this.loadComments();
+
+            })
+    }
+
+    handleInput(event) {
+
+        this.setState({
+            comment: event.target.value
+        })
     }
 
 
@@ -55,12 +73,13 @@ class SingleFeedPage extends React.Component {
         this.loadComments();
     }
 
-
     render() {
         return (
             <main>
                 <SinglePostItem {...this.state.post} />
-                <CommentsList {...this.state.comment} />
+                <input value={this.state.comment} onChange={this.handleInput} placeholder="Add your comment" />
+                <button onClick={this.postComment}>SEND </button>
+                <CommentsList comments={this.state.comments} />
             </main>
         )
 
