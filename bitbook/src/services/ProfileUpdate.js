@@ -18,9 +18,7 @@ class ProfileUpdate {
                 about: about,
                 avatarUrl: avatarUrl,
             }
-
         })
-
     }
 }
 

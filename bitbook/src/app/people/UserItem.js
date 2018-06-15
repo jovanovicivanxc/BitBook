@@ -8,6 +8,7 @@ const UserItem = (props) => {
             <h3 className="userName"><Link to={`/Profile`}> {props.name} </Link></h3>
             <br />
             <br />
+            <br />
             <p className="userAbout"> {props.aboutShort}</p>
             <p className="userDate"> Last post at {props.lastPostDate.slice(11, 16)} </p>
         </div >

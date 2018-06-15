@@ -28,6 +28,8 @@ class FeedPage extends React.Component {
         this.postVideoPost = this.postVideoPost.bind(this);
         this.postImagePost = this.postImagePost.bind(this);
 
+        this.loadPosts = this.loadPosts.bind(this);
+
     }
 
     loadPosts() {
@@ -108,7 +110,7 @@ class FeedPage extends React.Component {
 
         return (
             <main>
-                <PostsList posts={this.state.posts} />
+                <PostsList posts={this.state.posts} onDelete={this.loadPosts} />
 
                 <div>
                     <Modal open={open} onClose={this.onCloseModal} center>
