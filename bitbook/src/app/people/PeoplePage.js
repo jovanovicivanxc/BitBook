@@ -28,6 +28,7 @@ class PeoplePage extends React.Component {
     render() {
         return (
             <main>
+                <input type="text" />
                 <UsersList users={this.state.users} />
             </main>
         )
