@@ -351,7 +351,7 @@ h3{
 .userAbout {
   /* float: left; */
   margin-left: 20px;
-  width: 200px;
+  width: 250px;
   display: inline-block;
   float: left;
 }
@@ -376,4 +376,9 @@ h3{
 
 .uploadImg {
   width: 150px;
+}
+
+.deleteButton {
+  float: right;
+  margin: 5px;
 }
