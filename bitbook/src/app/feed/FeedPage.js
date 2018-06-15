@@ -110,55 +110,69 @@ class FeedPage extends React.Component {
 
         return (
             <main>
-                <PostsList posts={this.state.posts} onDelete={this.loadPosts} />
-
-                <div>
-                    <Modal open={open} onClose={this.onCloseModal} center>
-                        <h4>New post</h4>
-                        <p> Post content </p>
-                        <input value={this.state.postContent} onChange={this.handleTextInput} />
-                        <button onClick={this.postTextPost}> POST </button>
-                    </Modal>
-                </div>
-
-                <div>
-                    <Modal open={open2} onClose={this.onCloseModal2} center>
-                        <h4>New video post</h4>
-                        <p> Post content </p>
-                        <input value={this.state.postVideoContent} onChange={this.handleVideoInput} />
-                        <button onClick={this.postVideoPost}> POST </button>
-                    </Modal>
-                </div>
-
-                <div>
-                    <Modal open={open3} onClose={this.onCloseModal3} center>
-                        <h4>New image post</h4>
-                        <p> Post content </p>
-                        <input value={this.state.postImageContent} onChange={this.handleImageInput} />
-                        <button onClick={this.postImagePost}> POST </button>
-                    </Modal>
-                </div>
-
-
-
-                <div id="container-floating">
-
-                    <button onClick={this.onOpenModal} className="nd4 nds" data-toggle="tooltip" data-placement="left" data-original-title="contract@gmail.com"><img className="reminder" />
-                        <p className="letter">Post</p>
-                    </button>
-                    <button onClick={this.onOpenModal2} className="nd3 nds" data-toggle="tooltip" data-placement="left" data-original-title="Reminder"><img className="reminder" />
-                        <p className="letter">Video</p> </button>
-                    <button onClick={this.onOpenModal3} className="nd1 nds" data-toggle="tooltip" data-placement="left" data-original-title="Edoardo@live.it"><img className="reminder" />
-                        <p className="letter">Image</p>
-                    </button>
-
-                    <div id="floating-button" data-toggle="tooltip" data-placement="left" data-original-title="Create" onclick="newmail()">
-                        <p className="plus">+</p>
-                        <img className="edit" src="https://ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/1x/bt_compose2_1x.png" />
+                <aside className="filterMenu">
+                    <br />
+                    <p > Show on feed </p>
+                    <div class="dropdown">
+                        <button class="dropbtn">All posts</button>
+                        <div class="dropdown-content">
+                            <a>Videos</a>
+                            <a>Images</a>
+                            <a>Text</a>
+                        </div>
                     </div>
 
-                </div>
+                </aside>
+                <section>
+                    <PostsList posts={this.state.posts} onDelete={this.loadPosts} />
 
+                    <div>
+                        <Modal open={open} onClose={this.onCloseModal} center>
+                            <h4>New post</h4>
+                            <p> Post content </p>
+                            <input value={this.state.postContent} onChange={this.handleTextInput} />
+                            <button onClick={this.postTextPost}> POST </button>
+                        </Modal>
+                    </div>
+
+                    <div>
+                        <Modal open={open2} onClose={this.onCloseModal2} center>
+                            <h4>New video post</h4>
+                            <p> Post content </p>
+                            <input value={this.state.postVideoContent} onChange={this.handleVideoInput} />
+                            <button onClick={this.postVideoPost}> POST </button>
+                        </Modal>
+                    </div>
+
+                    <div>
+                        <Modal open={open3} onClose={this.onCloseModal3} center>
+                            <h4>New image post</h4>
+                            <p> Post content </p>
+                            <input value={this.state.postImageContent} onChange={this.handleImageInput} />
+                            <button onClick={this.postImagePost}> POST </button>
+                        </Modal>
+                    </div>
+
+
+
+                    <div id="container-floating">
+
+                        <button onClick={this.onOpenModal} className="nd4 nds" data-toggle="tooltip" data-placement="left" data-original-title="contract@gmail.com"><img className="reminder" />
+                            <p className="letter">Post</p>
+                        </button>
+                        <button onClick={this.onOpenModal2} className="nd3 nds" data-toggle="tooltip" data-placement="left" data-original-title="Reminder"><img className="reminder" />
+                            <p className="letter">Video</p> </button>
+                        <button onClick={this.onOpenModal3} className="nd1 nds" data-toggle="tooltip" data-placement="left" data-original-title="Edoardo@live.it"><img className="reminder" />
+                            <p className="letter">Image</p>
+                        </button>
+
+                        <div id="floating-button" data-toggle="tooltip" data-placement="left" data-original-title="Create" onclick="newmail()">
+                            <p className="plus">+</p>
+                            <img className="edit" src="https://ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/1x/bt_compose2_1x.png" />
+                        </div>
+
+                    </div>
+                </section>
             </main>
         )
     }
