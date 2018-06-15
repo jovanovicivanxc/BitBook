@@ -30,7 +30,7 @@
 .bitbook {
   float: left;
   display: inline-block;
-  margin-right:350px;
+  margin-right:400px;
   margin-left: 30px;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-size: 22px;
@@ -45,7 +45,7 @@
 }
 
 ul {
-  width: 700px;
+  width: 800px;
   margin: auto;
   background-color:lightgray;
   padding: 10px;
@@ -364,6 +364,7 @@ h3{
   width: 250px;
   display: inline-block;
   float: left;
+  text-align: left;
 }
 
 .userDate {
@@ -392,3 +393,54 @@ h3{
   float: right;
   margin: 5px;
 }
+
+main {
+  width: 800px;
+  margin: auto;
+}
+
+section {
+  display: inline-block;
+  /* float: left; */
+  
+}
+
+aside {
+  display: inline-block;
+  float: right;
+}
+
+.dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 85px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
