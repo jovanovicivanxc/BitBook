@@ -1,5 +1,5 @@
 import React from 'react';
-import PeopleService from '../../services/PeopleService';
+import ProfileService from '../../services/ProfileService';
 import UsersList from './UsersList';
 
 class PeoplePage extends React.Component {
@@ -23,15 +23,13 @@ class PeoplePage extends React.Component {
     }
 
     loadUsers() {
-        PeopleService.getUsers()
+        ProfileService.getUsers()
             .then((users) => {
                 this.setState({
                     users: users,
                 });
                 console.log(users);
-
             });
-
     }
 
     componentDidMount() {
@@ -42,7 +40,7 @@ class PeoplePage extends React.Component {
             <main>
                 <br />
                 <input className="searchBox" type="text" value={this.state.inputText} onChange={this.handleInput} />
-                {this.state.users.map((user) => user.name.includes(this.state.inputText) ? <UsersList users={this.state.users} /> : <p>No search results </p>)}
+                <UsersList inputText={this.state.inputText} users={this.state.users} />
             </main>
         )
     }

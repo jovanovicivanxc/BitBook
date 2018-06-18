@@ -44,7 +44,7 @@
   border: 1px solid gray;
 }
 
-ul {
+ul.nav {
   width: 800px;
   margin: auto;
   background-color:lightgray;
@@ -444,3 +444,4 @@ aside {
 .dropdown:hover .dropdown-content {display: block;}
 
 .dropdown:hover .dropbtn {background-color: #3e8e41;}
+

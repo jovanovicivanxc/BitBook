@@ -1,12 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import ShowPost from './ShowPost';
-import DeletePostService from '../../services/DeletePostService';
+import PostService from '../../services/PostService';
 import FeedPage from './FeedPage';
 
 
 const DeletePost = (id, onDelete) => {
-    DeletePostService.DeletePost(id).then(() => {
+    PostService.DeletePost(id).then(() => {
         onDelete();
     });
 }

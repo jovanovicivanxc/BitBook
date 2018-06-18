@@ -2,9 +2,6 @@ import React from 'react';
 import PostService from '../../services/PostService';
 import PostsList from './PostsList';
 import Modal from 'react-responsive-modal';
-import TextPostService from '../../services/TextPostService';
-import VideoPostService from '../../services/VideoPostService';
-import ImagePostService from '../../services/ImagePostService';
 
 class FeedPage extends React.Component {
     constructor(props) {
@@ -82,21 +79,21 @@ class FeedPage extends React.Component {
     };
 
     postTextPost() {
-        TextPostService.postSingleText(this.state.postContent, this.props.match.params.id)
+        PostService.postSingleText(this.state.postContent, this.props.match.params.id)
             .then((postContent) => {
                 this.loadPosts();
             })
     }
 
     postVideoPost() {
-        VideoPostService.postSingleVideo(this.state.postVideoContent, this.props.match.params.id)
+        PostService.postSingleVideo(this.state.postVideoContent, this.props.match.params.id)
             .then((postVideoContent) => {
                 this.loadPosts();
             })
     }
 
     postImagePost() {
-        ImagePostService.postSingleImage(this.state.postImageContent, this.props.match.params.id)
+        PostService.postSingleImage(this.state.postImageContent, this.props.match.params.id)
             .then((postImageContent) => {
                 this.loadPosts();
             })

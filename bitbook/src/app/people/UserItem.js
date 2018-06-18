@@ -5,7 +5,7 @@ const UserItem = (props) => {
     return (
         <div className="userItem">
             <img className="avatar" src={props.avatarUrl} alt="img" />
-            <h3 className="userName"><Link to={`/Profile`}> {props.name} </Link></h3>
+            <h3 className="userName"><Link to={`/People/${props.id}`}> {props.name} </Link></h3>
             <br />
             <br />
             <br />
