@@ -10,7 +10,7 @@ const UserItem = (props) => {
             <br />
             <br />
             <p className="userAbout"> {props.aboutShort}</p>
-            <p className="userDate"> Last post at {props.lastPostDate.slice(11, 16)} </p>
+            {props.lastPostDate === isFinite ? <p className="userDate"> Last post at {props.lastPostDate.slice(11, 16)} </p> : <p> No posts </p>}
         </div >
 
     )

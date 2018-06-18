@@ -12,6 +12,7 @@ class FeedPage extends React.Component {
 
         this.state = {
             posts: [],
+            postType: "all",
             open: false,
             open2: false,
             open3: false,
@@ -40,6 +41,22 @@ class FeedPage extends React.Component {
                 });
             });
     }
+
+    loadVideoOnly = () => {
+        this.setState({ postType: 'video' });
+    };
+
+    loadImageOnly = () => {
+        this.setState({ postType: 'image' });
+    };
+
+    loadTextOnly = () => {
+        this.setState({ postType: 'text' });
+    };
+
+    loadAllPosts = () => {
+        this.setState({ postType: 'all' });
+    };
 
     componentDidMount() {
         this.loadPosts();
@@ -114,17 +131,17 @@ class FeedPage extends React.Component {
                     <br />
                     <p > Show on feed </p>
                     <div class="dropdown">
-                        <button class="dropbtn">All posts</button>
+                        <button class="dropbtn" onClick={this.loadAllPosts} >All posts</button>
                         <div class="dropdown-content">
-                            <a>Videos</a>
-                            <a>Images</a>
-                            <a>Text</a>
+                            <a onClick={this.loadVideoOnly}>Videos</a>
+                            <a onClick={this.loadImageOnly}>Images</a>
+                            <a onClick={this.loadTextOnly}>Text</a>
                         </div>
                     </div>
 
                 </aside>
                 <section>
-                    <PostsList posts={this.state.posts} onDelete={this.loadPosts} />
+                    <PostsList posts={this.state.posts} postType={this.state.postType} onDelete={this.loadPosts} />
 
                     <div>
                         <Modal open={open} onClose={this.onCloseModal} center>
