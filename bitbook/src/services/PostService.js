@@ -83,6 +83,86 @@ class PostService {
                 return response.data.map((comment) => new Comment(comment.id, comment.dateCreated, comment.body, comment.postId, comment.authorName, comment.authorId));
             });
     }
+
+    DeletePost(id) {
+        return Axios({
+            method: 'DELETE',
+            url: `${serviceUrl}Posts/${id}`,
+            headers: {
+                'key': 'bitbookdev',
+                'sessionId': '2990B489-DB94-4AC1-ACDE-CDC9CC3EAEAE',
+                'content-type': 'application/json',
+            },
+            data: {
+                id: id,
+            }
+        })
+    }
+    postSingleImage(imageUrl, userId) {
+        return Axios({
+            method: 'post',
+            url: `${serviceUrl}ImagePosts/`,
+            headers: {
+                'key': 'bitbookdev',
+                'sessionId': '2990B489-DB94-4AC1-ACDE-CDC9CC3EAEAE',
+                'content-type': 'application/json',
+            },
+            data: {
+                imageUrl: imageUrl,
+                userId: userId
+            }
+        })
+    }
+
+    postSingleText(text, userId) {
+        return Axios({
+            method: 'post',
+            url: `${serviceUrl}TextPosts/`,
+
+            headers: {
+                'key': 'bitbookdev',
+                'sessionId': '2990B489-DB94-4AC1-ACDE-CDC9CC3EAEAE',
+                'content-type': 'application/json',
+            },
+            data: {
+                text: text,
+                userId: userId
+            }
+        })
+    }
+
+    postSingleVideo(videoUrl, userId) {
+        return Axios({
+            method: 'post',
+            url: `${serviceUrl}VideoPosts/`,
+            headers: {
+                'key': 'bitbookdev',
+                'sessionId': '2990B489-DB94-4AC1-ACDE-CDC9CC3EAEAE',
+                'content-type': 'application/json',
+            },
+            data: {
+                videoUrl: videoUrl,
+                userId: userId
+            }
+        })
+    }
+
+    postSingleComment(body, postId) {
+        return Axios({
+            method: 'post',
+            url: `${serviceUrl}Comments/`,
+
+            headers: {
+                'key': 'bitbookdev',
+                'sessionId': '2990B489-DB94-4AC1-ACDE-CDC9CC3EAEAE',
+                'content-type': 'application/json',
+            },
+            data: {
+                body: body,
+                postId: postId
+            }
+        })
+    }
 }
 
 export default new PostService();

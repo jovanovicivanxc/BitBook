@@ -4,7 +4,6 @@ import SingleProfile1 from './SingleProfile1';
 import SingleProfile2 from './SingleProfile2';
 import Modal from 'react-responsive-modal';
 import defImg from './def.png';
-import ProfileUpdate from '../../services/ProfileUpdate';
 
 
 class ProfilePage extends React.Component {
@@ -37,7 +36,7 @@ class ProfilePage extends React.Component {
     }
 
     postUpdate() {
-        ProfileUpdate.UpdateProfile(this.state.name, this.state.profile.email, this.state.description, this.state.description, this.state.imgUrl)
+        ProfileService.UpdateProfile(this.state.name, this.state.profile.email, this.state.description, this.state.description, this.state.imgUrl)
             .then(() => {
                 this.loadProfile();
 

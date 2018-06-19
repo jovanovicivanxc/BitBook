@@ -4,7 +4,7 @@ import UserItem from './UserItem';
 const UsersList = (props) => {
     return (
         <div>
-            {props.users.map((user) => <UserItem {...user} />)}
+            {props.users.filter(user => user.name.includes(props.inputText)).map((user) => <UserItem {...user} />)}
         </div>
     );
 }

@@ -4,9 +4,11 @@ import './App.css';
 import Header from './partials/Header';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import ProfilePage from './profile/ProfilePage';
+import ProfileOtherPage from './profileOther/ProfileOtherPage';
 import PeoplePage from './people/PeoplePage';
 import FeedPage from './feed/FeedPage';
 import SingleFeedPage from './singleFeed/SingleFeedPage';
+import LoginPage from './login/LoginPage';
 
 class App extends Component {
   render() {
@@ -14,14 +16,13 @@ class App extends Component {
       <div className="App">
         <Header />
         <Switch>
+          <Route path='/Login' component={LoginPage} />
           <Route exact path='/Profile' component={ProfilePage} />
-          <Route path='/People/:id' component={ProfilePage} />
+          <Route path='/People/:id' component={ProfileOtherPage} />
           <Route exact path='/People' component={PeoplePage} />
           <Route exact path='/' component={FeedPage} />
           <Route path='/SingleFeed/:type/:id' component={SingleFeedPage} />
         </Switch>
-
-
       </div>
     );
   }

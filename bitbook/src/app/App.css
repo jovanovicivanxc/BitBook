@@ -44,7 +44,7 @@
   border: 1px solid gray;
 }
 
-ul {
+ul.nav {
   width: 800px;
   margin: auto;
   background-color:lightgray;
@@ -427,7 +427,7 @@ aside {
   display: none;
   position: absolute;
   background-color: #f1f1f1;
-  min-width: 85px;
+  min-width: 90px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
 }
@@ -444,3 +444,4 @@ aside {
 .dropdown:hover .dropdown-content {display: block;}
 
 .dropdown:hover .dropbtn {background-color: #3e8e41;}
+

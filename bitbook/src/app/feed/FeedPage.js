@@ -2,9 +2,6 @@ import React from 'react';
 import PostService from '../../services/PostService';
 import PostsList from './PostsList';
 import Modal from 'react-responsive-modal';
-import TextPostService from '../../services/TextPostService';
-import VideoPostService from '../../services/VideoPostService';
-import ImagePostService from '../../services/ImagePostService';
 
 class FeedPage extends React.Component {
     constructor(props) {
@@ -12,6 +9,7 @@ class FeedPage extends React.Component {
 
         this.state = {
             posts: [],
+            postType: "all",
             open: false,
             open2: false,
             open3: false,
@@ -41,6 +39,22 @@ class FeedPage extends React.Component {
             });
     }
 
+    loadVideoOnly = () => {
+        this.setState({ postType: 'video' });
+    };
+
+    loadImageOnly = () => {
+        this.setState({ postType: 'image' });
+    };
+
+    loadTextOnly = () => {
+        this.setState({ postType: 'text' });
+    };
+
+    loadAllPosts = () => {
+        this.setState({ postType: 'all' });
+    };
+
     componentDidMount() {
         this.loadPosts();
     }
@@ -65,21 +79,21 @@ class FeedPage extends React.Component {
     };
 
     postTextPost() {
-        TextPostService.postSingleText(this.state.postContent, this.props.match.params.id)
+        PostService.postSingleText(this.state.postContent, this.props.match.params.id)
             .then((postContent) => {
                 this.loadPosts();
             })
     }
 
     postVideoPost() {
-        VideoPostService.postSingleVideo(this.state.postVideoContent, this.props.match.params.id)
+        PostService.postSingleVideo(this.state.postVideoContent, this.props.match.params.id)
             .then((postVideoContent) => {
                 this.loadPosts();
             })
     }
 
     postImagePost() {
-        ImagePostService.postSingleImage(this.state.postImageContent, this.props.match.params.id)
+        PostService.postSingleImage(this.state.postImageContent, this.props.match.params.id)
             .then((postImageContent) => {
                 this.loadPosts();
             })
@@ -114,17 +128,17 @@ class FeedPage extends React.Component {
                     <br />
                     <p > Show on feed </p>
                     <div class="dropdown">
-                        <button class="dropbtn">All posts</button>
+                        <button class="dropbtn" onClick={this.loadAllPosts} >All posts</button>
                         <div class="dropdown-content">
-                            <a>Videos</a>
-                            <a>Images</a>
-                            <a>Text</a>
+                            <a onClick={this.loadVideoOnly}>Videos</a>
+                            <a onClick={this.loadImageOnly}>Images</a>
+                            <a onClick={this.loadTextOnly}>Text</a>
                         </div>
                     </div>
 
                 </aside>
                 <section>
-                    <PostsList posts={this.state.posts} onDelete={this.loadPosts} />
+                    <PostsList posts={this.state.posts} postType={this.state.postType} onDelete={this.loadPosts} />
 
                     <div>
                         <Modal open={open} onClose={this.onCloseModal} center>

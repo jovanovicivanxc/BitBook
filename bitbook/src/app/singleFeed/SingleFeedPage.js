@@ -3,7 +3,6 @@ import PostItem from '../feed/PostsList';
 import PostService from '../../services/PostService';
 import SinglePostItem from './SinglePostItem';
 import CommentsList from './CommentsList';
-import CommentService from '../../services/CommentService';
 
 class SingleFeedPage extends React.Component {
     constructor(props) {
@@ -53,15 +52,13 @@ class SingleFeedPage extends React.Component {
     }
 
     postComment() {
-        CommentService.postSingleComment(this.state.comment, this.props.match.params.id)
+        PostService.postSingleComment(this.state.comment, this.props.match.params.id)
             .then((comment) => {
                 this.loadComments();
-
             })
     }
 
     handleInput(event) {
-
         this.setState({
             comment: event.target.value
         })
