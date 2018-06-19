@@ -31,7 +31,7 @@ class LoginPage extends React.Component {
     sendUserData() {
         LoginService.login(this.state.email, this.state.pass)
             .then((data) => {
-                console.log(data.username);
+                sessionStorage.setItem('user', JSON.stringify(data.data));
             })
     }
 
@@ -62,7 +62,7 @@ class LoginPage extends React.Component {
                         <p> Lorem ipsum dolor sit amet, orem ipsum dolor sit amet, orem ipsum dolor sit amet, orem ipsum dolor sit amet, orem ipsum dolor sit amet,orem ipsum dolor sit amet, orem ipsum dolor sit amet, orem ipsum dolor sit amet, orem ipsum dolor sit amet,orem ipsum dolor sit amet,orem ipsum dolor sit amet,
                     </p>
                         <span>Name</span>
-                        <input type="email" placeholder="Full Name" />
+                        <input type="text" placeholder="Full Name" />
                         <br />
                         <span>email</span>
                         <input type="email" placeholder="Email address" />

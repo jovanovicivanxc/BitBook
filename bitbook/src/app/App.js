@@ -11,21 +11,48 @@ import SingleFeedPage from './singleFeed/SingleFeedPage';
 import LoginPage from './login/LoginPage';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      logged: false,
+    }
+  }
+
+  componentDidMount() {
+    if (sessionStorage.getItem('user')) {
+      this.setState({
+        logged: true,
+      })
+    }
+  }
+
   render() {
-    return (
-      <div className="App">
-        <Header />
-        <Switch>
-          <Route path='/Login' component={LoginPage} />
-          <Route exact path='/Profile' component={ProfilePage} />
-          <Route path='/People/:id' component={ProfileOtherPage} />
-          <Route exact path='/People' component={PeoplePage} />
-          <Route exact path='/' component={FeedPage} />
-          <Route path='/SingleFeed/:type/:id' component={SingleFeedPage} />
-        </Switch>
-      </div>
-    );
+    if (this.state.logged) {
+      return (
+        <div className="App">
+          <Header />
+          < Switch >
+            <Route exact path='/Profile' component={ProfilePage} />
+            <Route path='/People/:id' component={ProfileOtherPage} />
+            <Route exact path='/People' component={PeoplePage} />
+            <Route exact path='/' component={FeedPage} />
+            <Route path='/SingleFeed/:type/:id' component={SingleFeedPage} />
+          </Switch>
+        </div>
+      )
+    }
+    else {
+      return (
+        <div className="App">
+          <Header />
+          < Switch >
+            <Route path='/' component={LoginPage} />
+          </Switch>
+        </div>
+      )
+    }
   }
 }
+
 
 export default App;
