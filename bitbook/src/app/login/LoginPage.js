@@ -31,7 +31,7 @@ class LoginPage extends React.Component {
     sendUserData() {
         LoginService.login(this.state.email, this.state.pass)
             .then((data) => {
-                // this.loadComments(); 
+                console.log(data.username);
             })
     }
 
