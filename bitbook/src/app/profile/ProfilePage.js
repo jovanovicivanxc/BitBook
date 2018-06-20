@@ -99,7 +99,7 @@ class ProfilePage extends React.Component {
                         <input type="file" name="pic" accept="image/*" />
                         <br />
                         <button onClick={this.onCloseModal} >CLOSE</button>
-                        <input type="button" onClick={this.postUpdate} value="UPDATE" />
+                        <input type="button" onClick={() => { this.postUpdate(); this.onCloseModal() }} value="UPDATE" />
 
                     </Modal>
                 </div>
