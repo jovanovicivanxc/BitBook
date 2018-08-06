@@ -4,7 +4,8 @@ Login/Register
 Profile
   Header
   Main
-  - Update profile 
+  Update profile 
+
 
 
 People 
@@ -13,11 +14,13 @@ People
   List of people with description
 
 
+
 Feed
   Header
   Sidebar
   List of posts (text, video or image)
   New Post Button ------> New Post Content (text, video or image)
+
 
 
 Single Feed Item
